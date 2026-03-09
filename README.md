@@ -1,0 +1,1 @@
+Esse aplicativo ainda está em fase de desenvolvimento, por isso, até o momento (09/03/2026) ele ainda não está nem perto de ser finalizado (~40%), por esse e outros motivos, eu peço que qualquer um que tenha o interesse em utilizá-lo/testá-lo entenda que atualmente eu ainda estou trabalhando no sistema de cadastro e login de usuários.
