@@ -24,6 +24,21 @@ def TelaLogin(function, container):
                 service.Username_Dont_Exist(error_txt1, zone1, V=True)
             else:
                 service.Incorrect_Password(error_txt1, zone2, V=True)
+    
+    def Show_Regist(function):
+        function('cadastrar-se')
+
+        IMG_PATH = Path(__file__).resolve().parent
+        frame = ctk.CTkFrame(container, width=680, height=200, fg_color='black', corner_radius=10)
+        frame.grid(row=0, column=0, pady=(50, 0))
+        frame.grid_propagate(False)
+        frame.grid_columnconfigure(0, weight=1)
+        frame.grid_rowconfigure(0, weight=1)
+
+        IMG_PIL = Image.open(IMG_PATH / 'images' / 'aviso.png')
+        IMG = ctk.CTkImage(light_image=IMG_PIL, dark_image=IMG_PIL, size=(680, 180))
+        IMG_label = ctk.CTkLabel(frame, text='', image=IMG)
+        IMG_label.grid(row=0, column=0)
 
     frame1 = ctk.CTkFrame(container, width=680, height=440, corner_radius=20, fg_color='black')
     frame1.place(relx=0.5, rely=0.5, anchor='center')
@@ -31,18 +46,15 @@ def TelaLogin(function, container):
 
     frame1.grid_columnconfigure(0, weight=1)
     
-    UI_DIR = Path(__file__).resolve().parent
-    IMG_DIR = 'images'
-    IMG_PATH = UI_DIR / IMG_DIR
+    UI_PATH = Path(__file__).resolve().parent
 
-    bg_pil1 = Image.open(IMG_PATH / 'login_bg.png')
-    bg_image1 = ctk.CTkImage(light_image=bg_pil1, dark_image=bg_pil1, size=(1920, 1080))
+    bg_pil = Image.open(UI_PATH / 'images' / 'login_bg.png')
+    bg_image = ctk.CTkImage(light_image=bg_pil, dark_image=bg_pil, size=(1920, 1080))
 
-    bg_label1 = ctk.CTkLabel(container, image=bg_image1, text='')
-    bg_label1.place(relx=0, rely=0, relwidth=1, relheight=1)
+    bg_label = ctk.CTkLabel(container, image=bg_image, text='')
+    bg_label.place(relx=0, rely=0, relwidth=1, relheight=1)
     
-    IMG_PATH1 = UI_DIR / IMG_DIR
-    txt_pill = Image.open(IMG_PATH1 / 'login_text.png')
+    txt_pill = Image.open(UI_PATH / 'images' / 'login_text.png')
     img_txt = ctk.CTkImage(light_image=txt_pill, dark_image=txt_pill, size=(400, 200))
 
     img_txt_label1 = ctk.CTkLabel(frame1, image=img_txt, text='')
@@ -66,7 +78,7 @@ def TelaLogin(function, container):
     txt2 = ctk.CTkLabel(frame1, font=('Roboto', 12), text='Você ainda não possui um cadastro ativo?')
     txt2.grid(row=0, column=0, pady=(300, 0), padx=(0, 90))
 
-    btn2 = ctk.CTkButton(frame1, width=30, height=10, text='Cadastrar-se', command=lambda: function('cadastrar-se'))
+    btn2 = ctk.CTkButton(frame1, width=30, height=10, text='Cadastrar-se', command=lambda: Show_Regist(function))
     btn2.grid(row=0, column=0, pady=(300, 0), padx=(240, 0))
 
     frame_box1 = ctk.CTkFrame(frame1, width=400, height=90, corner_radius=15, fg_color="#414446")

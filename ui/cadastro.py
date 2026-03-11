@@ -29,21 +29,14 @@ def TelaCadastro(function, container):
                 service.Dont_Accept_T(error_txt1, cbx1, V=True)
 
 
-    UI_DIR = Path(__file__).resolve().parent
-    IMG_DIR = 'images'
-    IMG_PATH = UI_DIR / IMG_DIR
-    
-    img_pill = Image.open(IMG_PATH / 'aviso.png')
-    error_rules_img = ctk.CTkImage(light_image=img_pill, dark_image=img_pill, size=(680, 180))
-    error_rules_label = ctk.CTkLabel(container, image=error_rules_img, text='', fg_color='transparent')
-    error_rules_label.place(relx=0.5, rely=(0.2), anchor='center')
+    IMG_PATH = Path(__file__).resolve().parent
 
     frame1 = ctk.CTkFrame(container, width=680, height=440, corner_radius=20, fg_color='black')
     frame1.place(relx=0.5, rely=0.5, anchor='center')
     frame1.grid_propagate(False)
     frame1.grid_columnconfigure(0, weight=1)
 
-    txt_pill = Image.open(IMG_PATH / 'cadastro_text.png')
+    txt_pill = Image.open(IMG_PATH / 'images' / 'cadastro_text.png')
     img_txt = ctk.CTkImage(light_image=txt_pill, dark_image=txt_pill, size=(400, 200))
     img_txt_label = ctk.CTkLabel(frame1, image=img_txt, text='')
     img_txt_label.grid(row=0, column=0, pady=(0, 280))
