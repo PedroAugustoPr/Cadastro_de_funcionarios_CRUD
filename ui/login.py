@@ -28,6 +28,8 @@ def TelaLogin(function, container):
     def Show_Regist(function):
         function('cadastrar-se')
 
+        global frame
+
         IMG_PATH = Path(__file__).resolve().parent
         frame = ctk.CTkFrame(container, width=680, height=200, fg_color='black', corner_radius=10)
         frame.grid(row=0, column=0, pady=(50, 0))

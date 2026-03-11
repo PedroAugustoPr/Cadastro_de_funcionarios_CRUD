@@ -4,6 +4,7 @@ from ui import service
 from pathlib import Path
 from PIL import Image
 import auth
+from ui import login
 
 
 def TelaCadastro(function, container):
@@ -27,6 +28,12 @@ def TelaCadastro(function, container):
                     service.U_or_E_Alredy_Used(error_txt1, zone2, zone3, True)
             else:
                 service.Dont_Accept_T(error_txt1, cbx1, V=True)
+
+    
+    def Hide_Patterns(function):
+        function('fazer-login')
+
+        login.frame.destroy()
 
 
     IMG_PATH = Path(__file__).resolve().parent
@@ -65,7 +72,7 @@ def TelaCadastro(function, container):
     txt2 = ctk.CTkLabel(frame1, font=('Roboto', 12), text='Você já possui um cadastro ativo?')
     txt2.grid(row=0, column=0, pady=(300, 0), padx=(0, 40))
 
-    btn2 = ctk.CTkButton(frame1, width=30, height=10, text='Entrar', command=lambda: function('fazer-login'))
+    btn2 = ctk.CTkButton(frame1, width=30, height=10, text='Entrar', command=lambda: Hide_Patterns(function))
     btn2.grid(row=0, column=0, pady=(300, 0), padx=(210, 0))
 
     return frame1
