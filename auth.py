@@ -17,9 +17,10 @@ def validar_cadastro(email, user_name, password, error_txt, camp2, camp3, camp4)
     if len(user_name) < 4:
         show_errors(error_txt, camp2, 'Você inseriu um nome de usuário muito curto!')
         return False
-    elif len(password) < 8:
+    elif len(password) < 8 or len(password) > 30:
         show_errors(error_txt, camp4, 'Você inseriu uma formatação de senha inválida!')
         return False
+    
     try:
         validate_email(email, check_deliverability=True)
     except EmailNotValidError:
