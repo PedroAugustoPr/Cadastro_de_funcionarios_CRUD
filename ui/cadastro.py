@@ -8,6 +8,27 @@ from ui import login
 
 
 def TelaCadastro(function, container):
+
+    def Show_Patterns(container):
+        IMG_PATH = Path(__file__).resolve().parent
+        frame = ctk.CTkFrame(container, width=680, height=200, fg_color='black', corner_radius=10)
+        frame.grid(row=0, column=0, pady=(50, 0))
+        frame.grid_propagate(False)
+        frame.grid_columnconfigure(0, weight=1)
+        frame.grid_rowconfigure(0, weight=1)
+
+        IMG_PIL = Image.open(IMG_PATH / 'images' / 'aviso.png')
+        IMG = ctk.CTkImage(light_image=IMG_PIL, dark_image=IMG_PIL, size=(680, 180))
+        IMG_label = ctk.CTkLabel(frame, text='', image=IMG)
+        IMG_label.grid(row=0, column=0)
+
+        def Del_GUI(GUI):
+            GUI.destroy()
+
+        X = ctk.CTkButton(frame, width=20, height=30, corner_radius=999, fg_color="#FFFFFF", text='X', text_color='black', command=lambda: Del_GUI(frame))
+        X.grid(row=0, column=0, pady=(0, 150), padx=(623, 0))
+
+
     a_t = ctk.BooleanVar(value=False)
     
     def cadastrar_se():
@@ -28,12 +49,8 @@ def TelaCadastro(function, container):
                     service.U_or_E_Alredy_Used(error_txt1, zone2, zone3, True)
             else:
                 service.Dont_Accept_T(error_txt1, cbx1, V=True)
-
-    
-    def Hide_Patterns(function):
-        function('fazer-login')
-
-        login.frame.destroy()
+        else:
+            Show_Patterns(container)
 
 
     IMG_PATH = Path(__file__).resolve().parent
@@ -50,6 +67,9 @@ def TelaCadastro(function, container):
 
     error_txt1 = ctk.CTkLabel(frame1, font=('Roboto', 14), text='', text_color='red')
     error_txt1.grid(row=0, column=0, pady=(0, 155))
+
+    BTN_Show_Patterns = ctk.CTkButton(frame1, width=32, height=32, corner_radius=16, fg_color="#009DFF", text='ⓘ', text_color='black', command=lambda: Show_Patterns(container))
+    BTN_Show_Patterns.grid(row=0, column=0, pady=(0, 430), padx=(0, 610))
 
     zone1 = ctk.CTkEntry(frame1, width=400, height=25, placeholder_text='Nome')
     zone1.grid(row=0, column=0, pady=(0, 100))
@@ -72,7 +92,7 @@ def TelaCadastro(function, container):
     txt2 = ctk.CTkLabel(frame1, font=('Roboto', 12), text='Você já possui um cadastro ativo?')
     txt2.grid(row=0, column=0, pady=(300, 0), padx=(0, 40))
 
-    btn2 = ctk.CTkButton(frame1, width=30, height=10, text='Entrar', command=lambda: Hide_Patterns(function))
+    btn2 = ctk.CTkButton(frame1, width=30, height=10, text='Entrar', command=lambda: function('fazer-login'))
     btn2.grid(row=0, column=0, pady=(300, 0), padx=(210, 0))
 
     return frame1

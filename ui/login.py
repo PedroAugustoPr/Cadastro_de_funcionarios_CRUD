@@ -24,23 +24,7 @@ def TelaLogin(function, container):
                 service.Username_Dont_Exist(error_txt1, zone1, V=True)
             else:
                 service.Incorrect_Password(error_txt1, zone2, V=True)
-    
-    def Show_Regist(function):
-        function('cadastrar-se')
 
-        global frame
-
-        IMG_PATH = Path(__file__).resolve().parent
-        frame = ctk.CTkFrame(container, width=680, height=200, fg_color='black', corner_radius=10)
-        frame.grid(row=0, column=0, pady=(50, 0))
-        frame.grid_propagate(False)
-        frame.grid_columnconfigure(0, weight=1)
-        frame.grid_rowconfigure(0, weight=1)
-
-        IMG_PIL = Image.open(IMG_PATH / 'images' / 'aviso.png')
-        IMG = ctk.CTkImage(light_image=IMG_PIL, dark_image=IMG_PIL, size=(680, 180))
-        IMG_label = ctk.CTkLabel(frame, text='', image=IMG)
-        IMG_label.grid(row=0, column=0)
 
     frame1 = ctk.CTkFrame(container, width=680, height=440, corner_radius=20, fg_color='black')
     frame1.place(relx=0.5, rely=0.5, anchor='center')
@@ -80,7 +64,7 @@ def TelaLogin(function, container):
     txt2 = ctk.CTkLabel(frame1, font=('Roboto', 12), text='Você ainda não possui um cadastro ativo?')
     txt2.grid(row=0, column=0, pady=(300, 0), padx=(0, 90))
 
-    btn2 = ctk.CTkButton(frame1, width=30, height=10, text='Cadastrar-se', command=lambda: Show_Regist(function))
+    btn2 = ctk.CTkButton(frame1, width=30, height=10, text='Cadastrar-se', command=lambda: function('cadastrar-se'))
     btn2.grid(row=0, column=0, pady=(300, 0), padx=(240, 0))
 
     frame_box1 = ctk.CTkFrame(frame1, width=400, height=90, corner_radius=15, fg_color="#414446")
