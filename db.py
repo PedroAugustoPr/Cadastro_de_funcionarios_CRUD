@@ -4,6 +4,7 @@ from pathlib import Path
 
 DB_PATH = Path(__file__).resolve().parent / 'base_de_dados.db'
 
+# Cria as tabelas existentes no banco de dados (caso não existam) e se conecta com o banco de dados pela primeira vez.
 with sql.connect(DB_PATH) as conn:
     cur = conn.cursor()
     cur.execute("""
@@ -24,6 +25,7 @@ with sql.connect(DB_PATH) as conn:
         """)
 
 
+# Guarda as informações de cadastro do usuário (caso corretas) na tabela "users". Além disso, ele muda a senha de "str" para "bytes" (encriptação).
 def cadastrar_usuário(name, user_name, email, senha):
     with sql.connect(DB_PATH) as conn:
         cur = conn.cursor()
@@ -37,7 +39,7 @@ def cadastrar_usuário(name, user_name, email, senha):
         else:
             return True
 
-
+# Verifica as informações inseridas pelo usuário nos campos de entrada e valida ou invalida as mesmas.
 def login(user_name, password):
     with sql.connect(DB_PATH) as conn:
         cur = conn.cursor()
@@ -55,6 +57,7 @@ def login(user_name, password):
             return errors
 
 
+# Guarda a informação de que o usuário marcou a caixa de entrada "Login automático" antes de efetuar o login.
 def remember_me(user_name):
     with sql.connect(DB_PATH) as conn:
         cur = conn.cursor()
@@ -64,6 +67,7 @@ def remember_me(user_name):
         conn.commit()
 
 
+# Verifica no banco de dados se o usuário marcou a caixa de entrada "Login automático" ou não.
 def check_remember_me():
     with sql.connect(DB_PATH) as conn:
         cur = conn.cursor()
@@ -78,6 +82,7 @@ def check_remember_me():
                 return False
 
 
+# Apaga todos os dados existentes na tabela "session".
 def clear_session():
     with sql.connect(DB_PATH) as conn:
         cur = conn.cursor()

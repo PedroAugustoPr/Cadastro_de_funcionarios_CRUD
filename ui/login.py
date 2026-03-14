@@ -6,8 +6,10 @@ from pathlib import Path
 
 
 def TelaLogin(function, container):
+    # "l_a" = "Login automático".
     l_a = ctk.BooleanVar(value=False)
-
+    
+    # Verifica se as informações de login informadas pelo usuário são verdadeiras.
     def fazer_login():
         user_name = zone1.get()
         password = zone2.get()
@@ -24,8 +26,9 @@ def TelaLogin(function, container):
                 service.Username_Dont_Exist(error_txt1, zone1, V=True)
             else:
                 service.Incorrect_Password(error_txt1, zone2, V=True)
-
-
+    
+    
+    # SESSION : UI
     frame1 = ctk.CTkFrame(container, width=680, height=440, corner_radius=20, fg_color='black')
     frame1.place(relx=0.5, rely=0.5, anchor='center')
     frame1.grid_propagate(False)

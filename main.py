@@ -6,10 +6,12 @@ from pathlib import Path
 
 frames = dict()
 
+# Função responsável por priozirar o frame informado no parâmetro "frame".
 def ExibirFrame(frame):
     next_frame = frames[frame]
     next_frame.tkraise()
 
+# Configurações Básicas do aplicativo.
 ctk.set_appearance_mode('dark')
 app = ctk.CTk()
 app.title('')
@@ -30,9 +32,11 @@ frames['home'] = home.TelaPrincipal(ExibirFrame, container, app)
 
 ExibirFrame('fazer-login')
 
+# Verifica se a caixa de entrada "Login automático" foi selecionada pelo usuário no login anterior.
 IsTrueOrFalse = db.check_remember_me()
 
 if IsTrueOrFalse:
     ExibirFrame('home')
 
+# Mantém o aplicativo funcionando.
 app.mainloop()

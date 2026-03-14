@@ -8,7 +8,7 @@ from ui import login
 
 
 def TelaCadastro(function, container):
-
+    # Exibe um frame que contém uma imagem na qual informa o padrão de formatação das senhas.
     def Show_Patterns(container):
         IMG_PATH = Path(__file__).resolve().parent
         frame = ctk.CTkFrame(container, width=680, height=200, fg_color='black', corner_radius=10)
@@ -28,9 +28,10 @@ def TelaCadastro(function, container):
         X = ctk.CTkButton(frame, width=20, height=30, corner_radius=999, fg_color="#FFFFFF", text='X', text_color='black', command=lambda: Del_GUI(frame))
         X.grid(row=0, column=0, pady=(0, 150), padx=(623, 0))
 
-
+    # "a_t" = "Aceitou os termos?".
     a_t = ctk.BooleanVar(value=False)
     
+    # Pega as informações inseridas pelo usuário em todos os campos de entrada e valida ou invalida as mesmas.
     def cadastrar_se():
         name = zone1.get()
         user_name = zone2.get()
@@ -52,7 +53,7 @@ def TelaCadastro(function, container):
         else:
             Show_Patterns(container)
 
-
+    # SESSION : UI
     IMG_PATH = Path(__file__).resolve().parent
 
     frame1 = ctk.CTkFrame(container, width=680, height=440, corner_radius=20, fg_color='black')
