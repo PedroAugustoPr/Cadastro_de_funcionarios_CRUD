@@ -39,7 +39,7 @@ def TelaCadastro(function, container):
         
         z = a_t.get()
         
-        v = auth.validar_cadastro(email, user_name, senha, error_txt1, zone2, zone3, zone4)
+        v = auth.validar_cadastro(email, user_name, senha, error_txt1, zone1, zone2, zone3, zone4)
         if v:
             if z:
                 x = db.cadastrar_usuário(name, user_name.strip(), email.strip(), senha.strip())
