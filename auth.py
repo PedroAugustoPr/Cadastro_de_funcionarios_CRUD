@@ -1,6 +1,7 @@
 import bcrypt as bc
 from email_validator import validate_email, EmailNotValidError
 
+
 # Oculta a mensagem de erro e volta a cor do campo de entrada para a sua cor original.
 def hide_errors(error_txt, camp, old_color, old_ctxt):
         camp.configure(fg_color=old_color, placeholder_text_color=old_ctxt)
@@ -27,12 +28,13 @@ def validar_cadastro(email, user_name, password, error_txt, camp1, camp2, camp3,
     
     #   SESSION : WITHOUT ANSWERS
     def without_answers(error_txt, *camp):
-            for c in range(0, 4):
-                old_c = camp[c].cget('fg_color')
-                old_ctxt = camp[c].cget('placeholder_text_color')
-                camp[c].configure(fg_color='red', placeholder_text_color='black')
-                error_txt.configure(text='Você precisa preencher todos os campos!')
-                camp[c].after(5000, lambda zone = camp[c], old_color = old_c, old_color_txt = old_ctxt: hide_errors(error_txt, zone, old_color, old_color_txt))
+        for c in range(0, 4):
+            old_c = camp[c].cget('fg_color')
+            old_ctxt = camp[c].cget('placeholder_text_color')
+            camp[c].configure(fg_color='red', placeholder_text_color='black')
+            error_txt.configure(text='Você precisa preencher todos os campos!')
+            camp[c].after(5000, lambda zone = camp[c], old_color = old_c, old_color_txt = old_ctxt: hide_errors(error_txt, zone, old_color, old_color_txt))
+    
     
     if not email.strip() or not password.strip() or not user_name.strip():
         without_answers(error_txt, camp1, camp2, camp3, camp4)
