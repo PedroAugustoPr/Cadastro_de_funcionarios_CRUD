@@ -11,7 +11,7 @@ def TelaCadastro(function, container):
     # Exibe um frame que contém uma imagem na qual informa o padrão de formatação das senhas.
     def Show_Patterns(container):
         IMG_PATH = Path(__file__).resolve().parent
-        frame = ctk.CTkFrame(container, width=680, height=200, fg_color='black', corner_radius=10)
+        frame = ctk.CTkFrame(container, width=680, height=200, corner_radius=10, fg_color='black')
         frame.grid(row=0, column=0, pady=(50, 0))
         frame.grid_propagate(False)
         frame.grid_columnconfigure(0, weight=1)
